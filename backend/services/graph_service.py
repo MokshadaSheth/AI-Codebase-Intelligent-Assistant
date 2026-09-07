@@ -61,6 +61,11 @@ class GraphService:
             limit=20
         )
 
+        retrieved_results = self.reranker_service.boost_code_matches(
+            state["question"],
+            retrieved_results
+        )
+
         return {"retrieved_results": retrieved_results}
 
     def rerank_node(self, state: GraphState):
